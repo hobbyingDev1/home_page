@@ -1,0 +1,6 @@
+# Google AdMob
+google.com, pub-5826204552891634, DIRECT, f08c47fec0942fa0
+
+# Pangle (TikTok)
+pangleglobal.com, 5036759, DIRECT
+pubmatic.com, 161490, RESELLER, 5d62403b186f2ace
