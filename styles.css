@@ -911,6 +911,19 @@ ul { list-style: none; }
   font-weight: 300;
   font-style: italic;
 }
+.footer__legal {
+  margin-top: 0.75rem;
+  font-size: 0.7rem;
+  color: var(--text-3);
+}
+.footer__legal a {
+  color: var(--text-3);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer__legal a:hover {
+  color: var(--text-1);
+}
 
 /* ─────────────────────────────
    RESPONSIVE

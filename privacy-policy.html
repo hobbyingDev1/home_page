@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.7; color: #333; background-color: #f9fafb;
+        }
+        .container { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
+        header { text-align: center; margin-bottom: 48px; padding-bottom: 32px; border-bottom: 2px solid #e5e7eb; }
+        header h1 { font-size: 32px; font-weight: 700; color: #111827; margin-bottom: 8px; }
+        header p.subtitle { font-size: 16px; color: #6b7280; }
+        header p.effective-date { font-size: 14px; color: #9ca3af; margin-top: 4px; }
+        h2 { font-size: 22px; font-weight: 600; color: #111827; margin-top: 40px; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid #e5e7eb; }
+        h3 { font-size: 18px; font-weight: 600; color: #374151; margin-top: 24px; margin-bottom: 12px; }
+        p { margin-bottom: 16px; color: #4b5563; }
+        ul, ol { margin-bottom: 16px; padding-left: 24px; }
+        li { margin-bottom: 8px; color: #4b5563; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 24px; font-size: 14px; }
+        table th, table td { padding: 12px 16px; text-align: left; border: 1px solid #e5e7eb; }
+        table th { background-color: #f3f4f6; font-weight: 600; color: #374151; }
+        table td { color: #4b5563; }
+        .highlight-box { background-color: #eff6ff; border-left: 4px solid #3b82f6; padding: 16px 20px; margin-bottom: 24px; border-radius: 0 8px 8px 0; }
+        .highlight-box p { margin-bottom: 0; color: #1e40af; }
+        a { color: #2563eb; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        footer { margin-top: 64px; padding-top: 24px; border-top: 2px solid #e5e7eb; text-align: center; color: #9ca3af; font-size: 14px; }
+        .feature-disabled { display: none; }
+        @media (max-width: 640px) {
+            .container { padding: 24px 16px; }
+            header h1 { font-size: 26px; }
+            h2 { font-size: 20px; }
+            table { font-size: 13px; }
+            table th, table td { padding: 8px 10px; }
+        }
+    </style>
+
+    <script>
+    // ============================================================
+    //  CONFIG — Edit this section for your company
+    // ============================================================
+    const CONFIG = {
+        // Company info
+        companyName:    "Hobbying",
+        companyEmail:   "support@hobby-ing.com",
+        companyAddress: "3, Gongwon-ro, Guro-gu, Seoul, Republic of Korea",
+
+        // Policy info
+        effectiveDate:  "March 12, 2026",
+        platforms:      "iOS and Android",
+
+        // Data storage region (Firebase region)
+        dataRegion:     "Asia-Southeast 1",
+
+        // Feature toggles — set to true/false per game
+        features: {
+            guestAccount:       true,   // Guest login supported
+            iap:                true,   // In-app purchases
+            pushNotifications:  true,   // Push notifications (FCM)
+            ads:                false,  // Ads (rewarded, interstitial, banner)
+            socialLogin:        true,   // Google / Apple sign-in
+            emailLogin:         false,   // Email / password sign-in
+            analytics:          true,   // Firebase Analytics
+        },
+
+        // Third-party services — add/remove per game
+        // Each: { name, provider, purpose, policyUrl }
+        thirdPartyServices: [
+            { name: "Firebase Authentication",    provider: "Google LLC",                  purpose: "User authentication",                          policyUrl: "https://firebase.google.com/support/privacy" },
+            { name: "Firebase Cloud Firestore",   provider: "Google LLC",                  purpose: "Cloud storage for game data",                  policyUrl: "https://firebase.google.com/support/privacy" },
+            { name: "Firebase Cloud Functions",   provider: "Google LLC",                  purpose: "Server-side game logic and purchase verification", policyUrl: "https://firebase.google.com/support/privacy" },
+            { name: "Firebase Analytics",         provider: "Google LLC",                  purpose: "Usage analytics and event tracking",           policyUrl: "https://firebase.google.com/support/privacy" },
+            { name: "Firebase Cloud Messaging",   provider: "Google LLC",                  purpose: "Push notifications",                           policyUrl: "https://firebase.google.com/support/privacy" },
+            { name: "Google Play / Apple App Store", provider: "Google LLC / Apple Inc.",   purpose: "In-app purchase processing and payment",       policyUrl: "https://policies.google.com/privacy" },
+            { name: "Unity Services",             provider: "Unity Technologies",          purpose: "Game engine services",                         policyUrl: "https://unity.com/legal/privacy-policy" },
+        ],
+    };
+    // ============================================================
+
+    document.addEventListener("DOMContentLoaded", () => {
+        // Fill in text placeholders
+        document.querySelectorAll("[data-cfg]").forEach(el => {
+            const key = el.getAttribute("data-cfg");
+            const keys = key.split(".");
+            let val = CONFIG;
+            for (const k of keys) val = val?.[k];
+            if (val !== undefined) el.textContent = val;
+        });
+
+        // href placeholders
+        document.querySelectorAll("[data-cfg-href]").forEach(el => {
+            const key = el.getAttribute("data-cfg-href");
+            const keys = key.split(".");
+            let val = CONFIG;
+            for (const k of keys) val = val?.[k];
+            if (val !== undefined) {
+                el.setAttribute("href", val.startsWith("mailto:") ? val : `mailto:${val}`);
+                if (!el.textContent.trim()) el.textContent = val;
+            }
+        });
+
+        // Feature toggles — show/hide sections
+        document.querySelectorAll("[data-feature]").forEach(el => {
+            const feature = el.getAttribute("data-feature");
+            const invert = el.hasAttribute("data-feature-invert");
+            const enabled = CONFIG.features[feature] ?? false;
+            if (invert ? enabled : !enabled) {
+                el.classList.add("feature-disabled");
+            }
+        });
+
+        // Build third-party services table
+        const tbody = document.getElementById("third-party-tbody");
+        if (tbody) {
+            CONFIG.thirdPartyServices.forEach(svc => {
+                const tr = document.createElement("tr");
+                tr.innerHTML = `
+                    <td>${svc.name}</td>
+                    <td>${svc.provider}</td>
+                    <td>${svc.purpose}</td>
+                    <td><a href="${svc.policyUrl}" target="_blank" rel="noopener">Privacy Policy</a></td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        // Build login methods list
+        const loginList = document.getElementById("login-methods");
+        if (loginList) {
+            const methods = [];
+            if (CONFIG.features.socialLogin) methods.push("Google sign-in", "Apple sign-in");
+            if (CONFIG.features.emailLogin)  methods.push("Email / password sign-in");
+            if (CONFIG.features.guestAccount) methods.push("Guest (anonymous) sign-in");
+            loginList.textContent = methods.join(", ");
+        }
+
+        // Page title
+        document.title = `Privacy Policy - ${CONFIG.companyName}`;
+
+        // Copyright year
+        const yearEl = document.getElementById("copyright-year");
+        if (yearEl) yearEl.textContent = new Date().getFullYear();
+    });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Privacy Policy</h1>
+            <p class="subtitle"><span data-cfg="companyName"></span></p>
+            <p class="effective-date">Effective Date: <span data-cfg="effectiveDate"></span></p>
+        </header>
+
+        <!-- 1. Introduction -->
+        <h2>1. Introduction</h2>
+        <p>
+            This Privacy Policy applies to all mobile games and applications ("the Game" or "our Games")
+            developed and published by <strong><span data-cfg="companyName"></span></strong>
+            ("we," "us," or "our") on <span data-cfg="platforms"></span>.
+            It explains how we collect, use, disclose, and safeguard your information when you use any of our Games.
+        </p>
+        <p>
+            By downloading, installing, or using the Game, you agree to the terms of this Privacy Policy.
+            If you do not agree with any part of this policy, please do not use the Game.
+        </p>
+
+        <!-- 2. Information We Collect -->
+        <h2>2. Information We Collect</h2>
+
+        <h3>2.1 Information You Provide</h3>
+        <table>
+            <thead>
+                <tr><th>Category</th><th>Data</th><th>Purpose</th></tr>
+            </thead>
+            <tbody>
+                <tr data-feature="socialLogin">
+                    <td>Account Information</td>
+                    <td>Authentication credentials via <span id="login-methods"></span></td>
+                    <td>Authentication, account linking, and data recovery</td>
+                </tr>
+                <tr data-feature="iap">
+                    <td>In-App Purchases</td>
+                    <td>Purchase receipts, transaction IDs, product IDs</td>
+                    <td>Processing and verifying purchases, preventing fraud</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>2.2 Information Collected Automatically</h3>
+        <table>
+            <thead>
+                <tr><th>Category</th><th>Data</th><th>Purpose</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Device Information</td>
+                    <td>Device unique identifier, device platform, app version</td>
+                    <td>Service delivery, multi-device login detection, technical support</td>
+                </tr>
+                <tr>
+                    <td>Game Progress Data</td>
+                    <td>Gameplay progress, collection data, currency balances, and other in-game state</td>
+                    <td>Saving and restoring your game progress, gameplay functionality</td>
+                </tr>
+                <tr data-feature="analytics">
+                    <td>Analytics Data</td>
+                    <td>App usage events, session data, in-app purchase events</td>
+                    <td>Understanding usage patterns, improving game experience</td>
+                </tr>
+                <tr data-feature="pushNotifications">
+                    <td>Push Notification Token</td>
+                    <td>Firebase Cloud Messaging (FCM) token, notification preferences, language preference</td>
+                    <td>Sending game notifications (if you opt in)</td>
+                </tr>
+                <tr data-feature="ads">
+                    <td>Advertising Data</td>
+                    <td>Advertising identifier, ad interaction data</td>
+                    <td>Serving relevant ads, measuring ad performance</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>2.3 Information We Do NOT Collect</h3>
+        <ul>
+            <li>Real name, phone number, or physical address</li>
+            <li>Precise geolocation data</li>
+            <li>Photos, contacts, or other personal files on your device</li>
+            <li>Financial information (credit card numbers, bank account details) &mdash; all payments are processed through Google Play or the Apple App Store</li>
+        </ul>
+
+        <!-- 3. How We Use Your Information -->
+        <h2>3. How We Use Your Information</h2>
+        <p>We use the collected information for the following purposes:</p>
+        <ul>
+            <li><strong>Provide and maintain the Game:</strong> Authenticate your account, save and sync your game progress across devices, and process in-app purchases.</li>
+            <li><strong>Improve the Game:</strong> Analyze usage patterns and gameplay data to enhance game features, balance, and user experience.</li>
+            <li data-feature="pushNotifications"><strong>Communications:</strong> Send push notifications about game events, updates, and promotions (only with your consent).</li>
+            <li data-feature="ads"><strong>Advertising:</strong> Display ads within the Game, including personalized ads based on your interests (where applicable and with your consent).</li>
+            <li><strong>Security and fraud prevention:</strong> Detect duplicate logins, verify purchase receipts, and prevent fraudulent transactions.</li>
+            <li><strong>Legal compliance:</strong> Comply with applicable laws, regulations, and legal processes.</li>
+        </ul>
+
+        <!-- 4. Third-Party Services -->
+        <h2>4. Third-Party Services</h2>
+        <p>We use the following third-party services that may collect and process your data according to their own privacy policies:</p>
+        <table>
+            <thead>
+                <tr><th>Service</th><th>Provider</th><th>Purpose</th><th>Privacy Policy</th></tr>
+            </thead>
+            <tbody id="third-party-tbody">
+                <!-- Populated by JavaScript from CONFIG.thirdPartyServices -->
+            </tbody>
+        </table>
+
+        <!-- 5. Advertising (conditional) -->
+        <div data-feature="ads">
+            <h2>5. Advertising</h2>
+            <p>
+                The Game may display ads, including rewarded ads that you can choose to watch in exchange for
+                in-game rewards. Our advertising partners may collect device identifiers and ad interaction data
+                to serve and measure ads.
+            </p>
+            <p>You can opt out of personalized advertising through your device settings:</p>
+            <ul>
+                <li><strong>Android:</strong> Settings &gt; Google &gt; Ads &gt; Opt out of Ads Personalization</li>
+                <li><strong>iOS:</strong> Settings &gt; Privacy &amp; Security &gt; Tracking &gt; disable "Allow Apps to Request to Track"</li>
+            </ul>
+        </div>
+
+        <!-- 6. Data Storage and Security -->
+        <h2>6. Data Storage and Security</h2>
+        <p>
+            Your game data is stored on servers managed by Google Cloud Platform (Firebase) located in
+            the <strong><span data-cfg="dataRegion"></span></strong> region.
+            We implement appropriate technical and organizational measures to protect your data, including:
+        </p>
+        <ul>
+            <li>Encrypted data transmission via HTTPS/TLS</li>
+            <li>Firebase Security Rules to restrict unauthorized access</li>
+            <li data-feature="iap">Server-side receipt verification for in-app purchases</li>
+            <li>Duplicate login detection to protect your account</li>
+        </ul>
+        <p>
+            While we take reasonable measures to protect your information, no method of electronic storage or
+            transmission over the Internet is 100% secure. We cannot guarantee absolute security.
+        </p>
+
+        <!-- 7. Data Retention -->
+        <h2>7. Data Retention</h2>
+        <p>We retain your data as follows:</p>
+        <ul>
+            <li><strong>Game progress data:</strong> Retained for as long as your account is active.</li>
+            <li data-feature="iap"><strong>Purchase records:</strong> Retained as required by applicable tax and financial regulations.</li>
+            <li data-feature="analytics"><strong>Analytics data:</strong> Retained according to Firebase Analytics default retention periods.</li>
+            <li data-feature="pushNotifications"><strong>Push notification tokens:</strong> Deleted when you disable notifications or uninstall the Game.</li>
+        </ul>
+        <p>
+            If you request account deletion, we will delete or anonymize your personal data within 30 days,
+            except where retention is required by law.
+        </p>
+
+        <!-- 8. Your Rights -->
+        <h2>8. Your Rights</h2>
+        <p>Depending on your jurisdiction, you may have the following rights:</p>
+        <ul>
+            <li><strong>Access:</strong> Request a copy of the personal data we hold about you.</li>
+            <li><strong>Correction:</strong> Request correction of inaccurate personal data.</li>
+            <li><strong>Deletion:</strong> Request deletion of your personal data and game account.</li>
+            <li data-feature="pushNotifications"><strong>Opt-out of notifications:</strong> Disable push notifications at any time through the in-game Settings menu or your device settings.</li>
+            <li data-feature="ads"><strong>Opt-out of personalized ads:</strong> Adjust your device advertising settings as described in Section 5.</li>
+            <li><strong>Withdraw consent:</strong> Withdraw consent for data processing at any time (this may affect your ability to use the Game).</li>
+            <li><strong>Data portability:</strong> Request your data in a portable format where technically feasible.</li>
+        </ul>
+        <p>
+            To exercise any of these rights, please contact us at the email address provided in the
+            "Contact Us" section below.
+        </p>
+
+        <!-- 9. Guest Accounts (conditional) -->
+        <div data-feature="guestAccount">
+            <h2>9. Guest Accounts</h2>
+            <div class="highlight-box">
+                <p>
+                    If you use a guest account, your game data is tied to your device. If you change devices or
+                    uninstall the Game without linking a social account (Google or Apple), your data cannot be recovered.
+                    We strongly recommend linking a social account to preserve your progress.
+                </p>
+            </div>
+        </div>
+
+        <!-- 10. Children's Privacy -->
+        <h2>10. Children's Privacy</h2>
+        <p>
+            The Game is not directed to children under the age of 13 (or the applicable minimum age in your jurisdiction).
+            We do not knowingly collect personal information from children under 13. If we become aware that a
+            child under 13 has provided us with personal information, we will take steps to delete such information promptly.
+        </p>
+        <p>
+            If you are a parent or guardian and believe your child has provided us with personal information,
+            please contact us so we can take appropriate action.
+        </p>
+
+        <!-- 11. International Data Transfers -->
+        <h2>11. International Data Transfers</h2>
+        <p>
+            Your information may be transferred to and processed in countries other than the country in which you
+            reside. These countries may have data protection laws that differ from those of your country.
+            By using the Game, you consent to the transfer of your information to these countries.
+        </p>
+        <p>
+            We ensure appropriate safeguards are in place to protect your data in compliance with applicable
+            data protection laws.
+        </p>
+
+        <!-- 12. Changes to This Privacy Policy -->
+        <h2>12. Changes to This Privacy Policy</h2>
+        <p>
+            We may update this Privacy Policy from time to time. When we make changes, we will update the
+            "Effective Date" at the top of this page and, for material changes, notify you through an
+            in-game notice or push notification.
+        </p>
+        <p>
+            Your continued use of the Game after any changes to this Privacy Policy constitutes your
+            acceptance of the updated terms.
+        </p>
+
+        <!-- 13. Contact Us -->
+        <h2>13. Contact Us</h2>
+        <p>If you have any questions, concerns, or requests regarding this Privacy Policy, please contact us:</p>
+        <ul>
+            <li><strong>Email:</strong> <a data-cfg-href="companyEmail"></a></li>
+            <li><strong>Company:</strong> <span data-cfg="companyName"></span></li>
+            <li><strong>Address:</strong> <span data-cfg="companyAddress"></span></li>
+        </ul>
+        <p>We aim to respond to all inquiries within 30 days.</p>
+
+        <footer>
+            <p>&copy; <span id="copyright-year"></span> <span data-cfg="companyName"></span>. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
