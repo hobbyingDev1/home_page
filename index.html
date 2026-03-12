@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hobbying — Mobile Game Studio</title>
+  <meta name="description" content="Hobbying은 모바일 게임을 개발하는 인디 게임 스튜디오입니다. 개발 중인 게임: MergeTen." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ─── Navigation ─── -->
+  <header class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="#hero" class="nav__logo" aria-label="Hobbying 홈">
+        <img src="Logo_White.png" alt="Hobbying" class="nav__logo-img" />
+      </a>
+      <nav class="nav__links" aria-label="주 메뉴">
+        <a href="#about">About</a>
+        <a href="#games">Games</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="nav__hamburger" aria-label="메뉴 열기" aria-expanded="false" id="hamburger">
+        <span></span><span></span>
+      </button>
+    </div>
+    <nav class="nav__mobile" id="mobileNav" aria-label="모바일 메뉴">
+      <a href="#about">About</a>
+      <a href="#games">Games</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ─── Hero ─── -->
+    <section class="hero" id="hero" aria-label="메인 배너">
+
+      <!-- Pill geometry background motifs -->
+      <div class="hero__bg" aria-hidden="true">
+        <div class="pill pill--a"></div>
+        <div class="pill pill--b"></div>
+        <div class="pill pill--c"></div>
+        <div class="pill pill--d"></div>
+      </div>
+
+      <!-- Subtle noise texture overlay -->
+      <div class="hero__noise" aria-hidden="true"></div>
+
+      <div class="hero__inner">
+        <!-- Large logo as main visual -->
+        <div class="hero__logo-wrap reveal-hero" aria-label="Hobbying">
+          <img src="Logo_White.png" alt="Hobbying" class="hero__logo" />
+        </div>
+
+        <p class="hero__eyebrow reveal-hero">Mobile Game Studio</p>
+
+        <h1 class="hero__title reveal-hero">
+          Play is the<br />
+          <em>point.</em>
+        </h1>
+
+        <p class="hero__desc reveal-hero">
+          저희는 작지만 진심입니다.<br />
+          재미있는 게임 하나를 제대로 만드는 스튜디오, Hobbying.
+        </p>
+
+        <div class="hero__cta reveal-hero">
+          <a href="#games" class="btn btn--primary">개발 중인 게임 보기</a>
+          <a href="#about" class="btn btn--ghost">스튜디오 소개</a>
+        </div>
+      </div>
+
+      <div class="hero__scroll-hint" aria-hidden="true">
+        <div class="hero__scroll-line"></div>
+        <span>Scroll</span>
+      </div>
+    </section>
+
+    <!-- ─── About ─── -->
+    <section class="about section" id="about" aria-label="회사 소개">
+      <div class="container">
+        <div class="section-label reveal">About</div>
+        <div class="about__layout">
+          <div class="about__left">
+            <h2 class="about__heading reveal">
+              취미에서<br />시작된<br />진지한 도전
+            </h2>
+          </div>
+          <div class="about__right">
+            <p class="about__body reveal">
+              Hobbying은 "취미"라는 단어에서 태어났습니다.
+              무언가를 그냥 좋아서 하는 것, 그 순수한 동기를 게임 개발에 담습니다.
+            </p>
+            <p class="about__body reveal">
+              저희가 만드는 게임은 복잡하지 않습니다.
+              하루 10분, 버스 안에서, 잠들기 전에 — 그 짧은 순간을
+              온전히 즐길 수 있도록 설계합니다.
+            </p>
+            <div class="about__stats reveal">
+              <div class="stat">
+                <span class="stat__num">1</span>
+                <span class="stat__label">개발 중인 게임</span>
+              </div>
+              <div class="stat">
+                <span class="stat__num">∞</span>
+                <span class="stat__label">할 수 있다는 믿음</span>
+              </div>
+              <div class="stat">
+                <span class="stat__num">100%</span>
+                <span class="stat__label">인디 독립 스튜디오</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Games ─── -->
+    <section class="games section" id="games" aria-label="개발 중인 게임">
+      <div class="container">
+        <div class="section-label reveal">Games</div>
+        <h2 class="games__heading reveal">지금 만들고 있는 것</h2>
+
+        <div class="game-card reveal" role="article" aria-label="MergeTen 게임 소개">
+          <div class="game-card__badge">개발 중</div>
+          <div class="game-card__inner">
+
+            <!-- Art panel: MergeTen atmosphere, no logo needed -->
+            <div class="game-card__art" aria-hidden="true">
+              <div class="game-card__art-bg"></div>
+              <!-- Number tiles floating — representing the game mechanics -->
+              <div class="game-card__tiles">
+                <div class="tile tile--lg" style="--tx:-18%;--ty:-22%;--tr:-8deg;--td:0s">9</div>
+                <div class="tile tile--sm" style="--tx:12%;--ty:-30%;--tr:5deg;--td:0.15s">1</div>
+                <div class="tile tile--md" style="--tx:28%;--ty:-5%;--tr:-3deg;--td:0.08s">8</div>
+                <div class="tile tile--sm" style="--tx:-28%;--ty:10%;--tr:11deg;--td:0.22s">2</div>
+                <div class="tile tile--lg tile--merge" style="--tx:2%;--ty:8%;--tr:-6deg;--td:0.05s">10</div>
+                <div class="tile tile--sm" style="--tx:22%;--ty:22%;--tr:7deg;--td:0.18s">3</div>
+                <div class="tile tile--md" style="--tx:-14%;--ty:28%;--tr:-12deg;--td:0.1s">7</div>
+                <div class="tile tile--sm" style="--tx:34%;--ty:30%;--tr:3deg;--td:0.25s">4</div>
+              </div>
+              <!-- Soft pill accent in background -->
+              <div class="game-card__art-pill"></div>
+            </div>
+
+            <div class="game-card__info">
+              <div class="game-card__title-row">
+                <h3 class="game-card__title">MergeTen</h3>
+              </div>
+              <p class="game-card__genre">
+                <span class="tag">모바일</span>
+                <span class="tag">디펜스</span>
+                <span class="tag">머지</span>
+              </p>
+              <p class="game-card__desc">
+                숫자를 합쳐 10을 만들고, 적을 막아라.
+                머지 퍼즐의 쾌감과 타워 디펜스의 전략성을
+                하나로 합친 모바일 하이브리드 게임.
+              </p>
+              <ul class="game-card__features">
+                <li>
+                  <span class="feature-dot" aria-hidden="true"></span>
+                  숫자 머지 + 타워 디펜스 하이브리드
+                </li>
+                <li>
+                  <span class="feature-dot" aria-hidden="true"></span>
+                  직관적인 원핸드 조작
+                </li>
+                <li>
+                  <span class="feature-dot" aria-hidden="true"></span>
+                  깊이 있는 업그레이드 &amp; 경제 시스템
+                </li>
+                <li>
+                  <span class="feature-dot" aria-hidden="true"></span>
+                  Unity 기반 모바일 최적화
+                </li>
+              </ul>
+              <div class="game-card__status">
+                <div class="status-track">
+                  <div class="status-bar">
+                    <div class="status-bar__fill" style="--progress: 55%"></div>
+                  </div>
+                </div>
+                <div class="status-meta">
+                  <span class="status-bar__label">알파 단계</span>
+                  <span class="status-pct">55%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Contact ─── -->
+    <section class="contact section" id="contact" aria-label="연락처">
+      <div class="container">
+        <div class="section-label reveal">Contact</div>
+        <div class="contact__layout">
+          <div class="contact__left">
+            <h2 class="contact__heading reveal">
+              함께<br />이야기<br />나눠요
+            </h2>
+            <p class="contact__sub reveal">
+              게임에 관심 있으신가요?<br />
+              협업, 피드백,<br />그냥 인사도 환영합니다.
+            </p>
+          </div>
+          <div class="contact__right">
+            <div class="contact__links reveal">
+              <a href="mailto:hello@hobbying.com" class="contact-link" aria-label="이메일로 연락하기">
+                <div class="contact-link__icon" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="1.5" y="4" width="17" height="12" rx="2"/>
+                    <path d="M1.5 6.5l8.5 5.5 8.5-5.5"/>
+                  </svg>
+                </div>
+                <div class="contact-link__body">
+                  <span class="contact-link__label">이메일</span>
+                  <span class="contact-link__value">hello@hobbying.com</span>
+                </div>
+                <div class="contact-link__arrow" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 8h10M9 4l4 4-4 4"/>
+                  </svg>
+                </div>
+              </a>
+
+              <a href="https://twitter.com/hobbying_game" target="_blank" rel="noopener noreferrer" class="contact-link" aria-label="X (Twitter) 팔로우하기">
+                <div class="contact-link__icon" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M15.5 2.5h2.8L12.4 9.2 19 17.5h-5.2l-3.7-5.1-4.3 5.1H3l6.2-7.4L3 2.5h5.3l3.3 4.5 3.9-4.5z" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <div class="contact-link__body">
+                  <span class="contact-link__label">X (Twitter)</span>
+                  <span class="contact-link__value">@hobbying_game</span>
+                </div>
+                <div class="contact-link__arrow" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 8h10M9 4l4 4-4 4"/>
+                  </svg>
+                </div>
+              </a>
+
+              <a href="https://github.com/hobbying" target="_blank" rel="noopener noreferrer" class="contact-link" aria-label="GitHub 방문하기">
+                <div class="contact-link__icon" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M10 1.5a8.5 8.5 0 00-2.687 16.565c.425.078.58-.184.58-.409 0-.202-.007-.736-.011-1.444-2.363.513-2.862-1.14-2.862-1.14-.386-.981-.943-1.243-.943-1.243-.77-.527.059-.516.059-.516.853.06 1.302.876 1.302.876.758 1.298 1.99.923 2.474.706.077-.549.296-.923.539-1.135-1.887-.215-3.87-.944-3.87-4.199 0-.927.33-1.685.874-2.28-.088-.215-.378-1.079.083-2.248 0 0 .712-.228 2.33.869A8.1 8.1 0 0110 6.2c.718.003 1.44.097 2.115.286 1.617-1.097 2.327-.869 2.327-.869.462 1.17.171 2.033.084 2.248.545.595.872 1.353.872 2.28 0 3.263-1.985 3.981-3.878 4.191.305.263.577.78.577 1.573 0 1.135-.01 2.05-.01 2.33 0 .227.153.491.585.408A8.502 8.502 0 0010 1.5z"/>
+                  </svg>
+                </div>
+                <div class="contact-link__body">
+                  <span class="contact-link__label">GitHub</span>
+                  <span class="contact-link__value">github.com/hobbying</span>
+                </div>
+                <div class="contact-link__arrow" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 8h10M9 4l4 4-4 4"/>
+                  </svg>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ─── Footer ─── -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          <img src="Logo_White.png" alt="Hobbying" class="footer__logo-img" />
+        </div>
+        <p class="footer__copy">&copy; 2025 Hobbying. All rights reserved.</p>
+        <p class="footer__tagline">Making games we love to play.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
